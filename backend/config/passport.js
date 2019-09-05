@@ -17,8 +17,6 @@ module.exports = app => {
                 if (user) {
                     done(null, { 
                         //codigo_cli: user.codigo_cli,
-                        //nome_cli: user.nome_cli,
-                        //documento_cli: user.documento_cli
                     })
                 } else {
                     done(null, false)

@@ -14,7 +14,7 @@ const Login = () => {
 
 
     const loginAPI = async function(email, password) {
-        const response = await api.post('/', {email, password});
+        const response = await api.post('/signin', {email, password});
     }
 
     const handleSubmit = () => {

@@ -3,6 +3,7 @@ const jwt = require('jwt-simple')
 const crypto = require('crypto')
 
 module.exports = app => {
+
     const signin = async (req, res) => {
         if (!req.body.email) {
             return res.status(204).send('Dados incompletos')
@@ -11,14 +12,14 @@ module.exports = app => {
         const user = await app.db('usuario')
             .whereRaw("LOWER(email) = LOWER(?)", req.body.email)
             .first()
-            
+
         if (user) {
             if (!req.body.password){
                 return res.status(200).send({retorno: true, msg: 'Usuário encontrado!'})
             } else {
                 var hash = crypto.createHmac('sha1', KEY).update(req.body.password).digest('hex')
                 console.log(hash)
-                if(hash === user.senha_cli){
+                if(hash === user.senha){
                     const payload = { id: user.id_usuario }
                     return res.status(200).send({
                         retorno: true, 

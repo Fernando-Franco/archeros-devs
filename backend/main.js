@@ -12,6 +12,8 @@ consign()
 
 app.db = db
 
+app.use(express.static(__dirname + '/apidocs'))
+
 app.listen(21086, () => {
     console.log('Backend executando...')
 })

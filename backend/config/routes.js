@@ -1,6 +1,6 @@
 // apidoc -i backend/config -o backend/apidocs
 module.exports = app => {
-    app.get('/', app.api.welcome.hello);
+    app.get('/', app.api.welcome.docs);
 
     /**
      * @api {get} /signin Singin

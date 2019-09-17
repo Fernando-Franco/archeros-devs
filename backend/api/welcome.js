@@ -1,6 +1,13 @@
+const path = require('path');
+
 module.exports = app => {
-    const hello = async (req, res) => {
-        res.status(400).send('Olá')
+    const docs = async (req, res) => {
+        console.log(__dirname)
+        try {
+            res.sendFile(__dirname + 'docs/index.html');
+        } catch (error) {
+            console.log(error)
+        }
     }
-    return { hello }
+    return { docs }
 }

@@ -17,16 +17,16 @@ const Login = () => {
     
         
     const handleSubmit = async () => {
-        var email = document.getElementById("login-email");
-        var password = document.getElementById("login-password");
+        var email = document.getElementById("login-email").value;
+        var password = document.getElementById("login-password").value;
 
-        if ((email != '') && (password != '')) {
+        if ((email !== '') && (password !== '')) {
             try {
-                const response = await api.post('/signin', {email, password});
-                
+                const response = await api.get('/signin', {email, password});
+                console.log(response.data);
                 setUser(response.data);
-        
-                if (user.retorno == true ) {
+                console.log(user);
+                if (user.retorno === true ) {
                     alert("Logado");
                     axios.defaults.headers.common = {'Authorization': `bearer ${user.token}`}
                 } else {

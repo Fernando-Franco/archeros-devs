@@ -31,7 +31,7 @@ module.exports = app => {
      */
     app.post('/signin', app.api.auth.signin)
 
-    //app.route('/oportunidades/balance')
-    //    .all(app.config.passport.authenticate())
-    //    .post(app.api.oportunidades.balanceRequest)
+    app.route('/messagem/enviar')
+        .all(app.config.passport.authenticate())
+        .post(app.api.mensagem.enviar)
 }

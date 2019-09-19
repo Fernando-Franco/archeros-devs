@@ -22,14 +22,14 @@ class SignUp1 extends React.Component {
 
     handleSubmit = async () => {
         axios.get('http://ftp.nodejs7605.kinghost.net:21086/signin', {
-            "email" : "archeros.devs@gmail.com",
-	        "password" : "123"
+            email : "archeros.devs@gmail.com",
+	        password : "123"
         },{ headers: {
             'Content-Type': 'application/json',
         }}).then(res => {
             console.log(res);
             console.log(res.data);
-          })
+          }).catch(err => console.log(err))
     }
 
     render () {

@@ -11,7 +11,9 @@ import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
 
 import logo from '../../../assets/images/logo.png';
 
-class SignUp1 extends React.Component {
+class SignUp extends React.Component {
+    constructor(props){super(props)}
+
     state = {
         email: '',
         senha: ''
@@ -25,7 +27,7 @@ class SignUp1 extends React.Component {
             email : this.state.email,
 	        password : this.state.senha
         }).then(res => {
-            console.log(res.data);
+            this.props.history.replace('/dashboard', null)
         }).catch(err => console.log(err))
     }
 
@@ -99,4 +101,4 @@ class SignUp1 extends React.Component {
     }
 }
 
-export default SignUp1;
+export default SignUp;

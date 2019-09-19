@@ -1,11 +1,11 @@
 import React from 'react';
 
-const SignUp1 = React.lazy(() => import('./Demo/Authentication/SignUp/SignUp1'));
-const Signin1 = React.lazy(() => import('./Demo/Authentication/SignIn/SignIn1'));
+const SignUp = React.lazy(() => import('./Screen/Authentication/SignUp/SignUp'));
+const Signin = React.lazy(() => import('./Screen/Authentication/SignIn/SignIn'));
 
 const route = [
-    { path: '/auth/signup', exact: true, name: 'Signup 1', component: SignUp1 },
-    { path: '/auth/signin', exact: true, name: 'Signin 1', component: Signin1 }
+    { path: '/auth/signup', exact: true, name: 'Signup', component: SignUp },
+    { path: '/auth/signin', exact: true, name: 'Signin', component: Signin }
 ];
 
 export default route;

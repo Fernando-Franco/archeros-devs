@@ -1,5 +1,6 @@
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import axios from 'axios'
 
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 import GoogleLogin from 'react-google-login'
@@ -11,8 +12,25 @@ import Breadcrumb from "../../../App/layout/AdminLayout/Breadcrumb";
 import logo from '../../../assets/images/logo.png';
 
 class SignUp1 extends React.Component {
+    state = {
+        email: '',
+        senha: ''
+    }
+
     responseFacebook = () => {}
     responseGoogle = () => {}
+
+    handleSubmit = async () => {
+        axios.get('http://ftp.nodejs7605.kinghost.net:21086/signin', {
+            "email" : "archeros.devs@gmail.com",
+	        "password" : "123"
+        },{ headers: {
+            'Content-Type': 'application/json',
+        }}).then(res => {
+            console.log(res);
+            console.log(res.data);
+          })
+    }
 
     render () {
         return(
@@ -26,16 +44,18 @@ class SignUp1 extends React.Component {
                             <span className="r s"/>
                             <span className="r"/>
                         </div>
-                        <div className="card">
+                        <form className="card" action="#" onSubmit={this.handleSubmit} >
                             <div className="card-body text-center">
                                 <div className="mb-4">
                                     <img  style={{width: '200px'}} src={logo} alt="logo"/>
                                 </div>
                                 <div className="input-group mb-3">
-                                    <input type="email" className="form-control" placeholder="E-mail"/>
+                                    <input type="email" className="form-control" placeholder="E-mail" required
+                                        value={this.state.email} onChange={(event)=>this.setState({email: event.target.value})}/>
                                 </div>
                                 <div className="input-group mb-4">
-                                    <input type="password" className="form-control" placeholder="Senha"/>
+                                    <input type="password" className="form-control" placeholder="Senha" required
+                                        value={this.state.senha} onChange={(event)=>this.setState({senha: event.target.value})}/>
                                 </div>
                                 <div className="form-group text-left" style={{WebkitJustifyContent: 'space-between'}}>
                                     <div className="checkbox checkbox-fill d-inline">
@@ -74,7 +94,7 @@ class SignUp1 extends React.Component {
                                 {/*<p className="mb-2 text-muted">Esqueceu a senha? <NavLink to="/auth/reset-password-1">Recuperar</NavLink></p>*/}
                                 {/*<p className="mb-0 text-muted">Não tem uma conta? <NavLink to="/auth/signup">Inscrever-se</NavLink></p>*/}
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </Aux>
